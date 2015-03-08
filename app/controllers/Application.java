@@ -14,8 +14,9 @@ public class Application extends Controller {
     public static WebSocket<String> socket() {
 		return new WebSocket<String>() {
 
+			
 			@Override
-			public void onReady(WebSocket.In<String> in,
+			public void onReady(WebSocket.In<String> in, 
 					final WebSocket.Out<String> out) {
 				in.onMessage(new F.Callback<String>() {
 
