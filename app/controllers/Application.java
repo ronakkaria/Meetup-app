@@ -1,9 +1,12 @@
 package controllers;
 
-import play.*;
+import play.Logger;
+import play.api.libs.concurrent.Promise;
 import play.libs.F;
-import play.mvc.*;
-import views.html.*;
+import play.mvc.Controller;
+import play.mvc.Result;
+import play.mvc.WebSocket;
+import views.html.index;
 
 public class Application extends Controller {
 
@@ -11,32 +14,8 @@ public class Application extends Controller {
         return ok(index.render("Your new application is ready."));
     }
     
-    static int maxCount = 0;
-    
     public static WebSocket<String> socket() {
-		return new WebSocket<String>() {
-
-			
-			@Override
-			public void onReady(WebSocket.In<String> in, 
-					final WebSocket.Out<String> out) {
-				in.onMessage(new F.Callback<String>() {
-
-					@Override
-					public void invoke(String event) throws Throwable {
-						Integer count = 1 + Integer.parseInt(event);
-						out.write("Just checking bitch " + count);
-						if (count > maxCount) {
-							maxCount = count;
-							Logger.info(event);
-						}
-					}
-				});
-
-				out.write("Freeze Motherfucker");
-			}
-
-		};
+    	return WebSocket.withActor(MyWebSocketActor::props);
     }
 
 }
