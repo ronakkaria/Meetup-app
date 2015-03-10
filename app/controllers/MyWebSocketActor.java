@@ -29,7 +29,7 @@ public class MyWebSocketActor extends UntypedActor {
         	out.tell("Just checking bitch " + count, self());
 			if (count > maxCount) {
 				maxCount = count;
-				Logger.info((String)message);
+				Logger.info(((String)message).substring(0,1));
 			}
         }
     }
