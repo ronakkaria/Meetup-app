@@ -24,7 +24,7 @@ public class Application extends Controller {
 					public void invoke(String event) throws Throwable {
 						Integer count = 1 + Integer.parseInt(event);
 						out.write("Just checking bitch " + count);
-						Logger.info(event);
+						//Logger.info(event);
 					}
 				});
 
