@@ -18,11 +18,13 @@ public class MyWebSocketActor extends UntypedActor {
     public MyWebSocketActor(ActorRef out) {
         this.out = out;
     }
+    
+    
 
     public void onReceive(Object message) throws Exception {
         if (message instanceof String) {
             
-        	Integer count = 1 + Integer.parseInt((String)message);
+        	Integer count = 1 + Integer.parseInt(((String)message).substring(0, 1));
 			
         	out.tell("Just checking bitch " + count, self());
 			if (count > maxCount) {
