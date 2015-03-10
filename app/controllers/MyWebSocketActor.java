@@ -28,10 +28,10 @@ public class MyWebSocketActor extends UntypedActor {
         	Integer count = 1 + Integer.parseInt(actualMessage);
 			
         	out.tell("Just checking bitch " + count, self());
-			if (count > maxCount) {
-				maxCount = count;
-				Logger.info(actualMessage);
-			}
+			
+			maxCount = count;
+			Logger.info(actualMessage);
+			
         }
     }
 }
