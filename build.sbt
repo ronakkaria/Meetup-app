@@ -10,5 +10,10 @@ libraryDependencies ++= Seq(
   javaJdbc,
   javaEbean,
   cache,
-  javaWs
+  javaWs,
+  "com.typesafe.play.plugins" %% "play-plugins-redis" % "2.3.1"
+)
+
+resolvers  ++= Seq(
+	"google-sedis-fix" at "http://pk11-scratch.googlecode.com/svn/trunk"
 )
